@@ -26,6 +26,7 @@ namespace CookieClicker.Runtime.Model
 		public void Add(int cookiesToAdd = 1)
 		{
 			Amount += cookiesToAdd;
+			DomainEvents.CookieEarned.Invoke(Amount);
 		}
 
 		public void OneSecondHasPassed()
@@ -54,5 +55,10 @@ namespace CookieClicker.Runtime.Model
 			Amount -= AutoclickerPrice;
 			isAutoclickerPurchased = true;
 		}
+	}
+
+	public static class DomainEvents
+	{
+		public static Action<int> CookieEarned { get; } = delegate { };
 	}
 }
