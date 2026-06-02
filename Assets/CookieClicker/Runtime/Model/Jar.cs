@@ -30,7 +30,7 @@ namespace CookieClicker.Runtime.Model
 
 		public void OneSecondHasPassed()
 		{
-			Amount++;
+			Add();
 		}
 
 		public void SecondsHavePassed(float f)
