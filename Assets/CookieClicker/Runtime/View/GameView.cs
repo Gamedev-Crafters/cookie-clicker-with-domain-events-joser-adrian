@@ -10,14 +10,20 @@ namespace CookieClicker.Runtime.View
 
 		public void Initialize(Jar jar)
 		{
+			DomainEvents.CookieEarned += RefreshCounter;
 			this.jar = jar;
 			Refresh();
 		}
 
 		public void Refresh()
 		{
-			FindFirstObjectByType<CookieCounter>().Refresh(jar.Amount);
+			RefreshCounter(jar.Amount);
 			FindFirstObjectByType<PurchaseAutoclickerButton>().Refresh(jar.Amount, jar.AutoclickerPrice);
+		}
+
+		private static void RefreshCounter(int amount)
+		{
+			FindFirstObjectByType<CookieCounter>().Refresh(amount);
 		}
 	}
 }

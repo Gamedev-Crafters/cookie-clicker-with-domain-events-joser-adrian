@@ -59,6 +59,6 @@ namespace CookieClicker.Runtime.Model
 
 	public static class DomainEvents
 	{
-		public static Action<int> CookieEarned { get; } = delegate { };
+		public static Action<int> CookieEarned { get; set; } = delegate { };
 	}
 }
