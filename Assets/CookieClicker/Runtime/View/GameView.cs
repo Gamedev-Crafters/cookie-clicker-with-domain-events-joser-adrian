@@ -1,4 +1,5 @@
-﻿using CookieClicker.Runtime.Model;
+﻿using System;
+using CookieClicker.Runtime.Model;
 using CookieClicker.Runtime.Presenter;
 using UnityEngine;
 
@@ -13,6 +14,11 @@ namespace CookieClicker.Runtime.View
 			DomainEvents.CookieEarned += RefreshCounter;
 			this.jar = jar;
 			Refresh();
+		}
+
+		private void OnDestroy()
+		{
+			DomainEvents.CookieEarned -= RefreshCounter;
 		}
 
 		public void Refresh()
